@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Subdomains\SubdomainsController;
+use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,11 +43,7 @@ Route::prefix('admin')->group(function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-
-
-
-
-
+Route::resource('tag', TagsController::class);
 
 
 Route::get('/admin', [IndexController::class, 'index'])->name('admin');
