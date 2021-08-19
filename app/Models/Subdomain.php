@@ -24,5 +24,10 @@ class Subdomain extends Model
     {
         return $this->hasMany(Moderator::class);
     }
+
+    public function category():HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
 }
 
