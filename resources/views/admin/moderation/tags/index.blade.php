@@ -26,6 +26,7 @@
                         <th>created at</th>
                         <th>updated at</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,7 +48,6 @@
                 </table>
             </div>
         </div>
-
     </div>
 
 @endsection

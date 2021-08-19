@@ -35,7 +35,7 @@ class TagsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector|string
      */
     public function store(TagRequest $request, Tag $tag)
     {
@@ -46,6 +46,7 @@ class TagsController extends Controller
 
         return redirect()->route('tag.show', $tag)
             ->with('success', "Tag {$tag->name} has been created");
+
     }
 
     /**
@@ -56,8 +57,7 @@ class TagsController extends Controller
      */
     public function show(Tag $tag)
     {
-        return view('admin.moderation.tags.show')
-            ->with('tag', $tag);
+        return view('admin.moderation.tags.show')->with('tag', $tag);
     }
 
     /**
@@ -68,8 +68,7 @@ class TagsController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('admin.moderation.tags.edit')
-            ->with('tag', $tag);
+        return view('admin.moderation.tags.edit')->with('tag', $tag);
     }
 
     /**
@@ -99,6 +98,8 @@ class TagsController extends Controller
     {
         $tag->delete();
 
-        return redirect()->route('tag.index');
+        return redirect()->route('tag.index')
+            ->with('success', "Tag {$tag->name} deleted successful");
     }
 }
+

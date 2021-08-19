@@ -5,7 +5,7 @@
         <div class="card mt-2">
             <div class="card-header"> Edit tag</div>
             <div class="card-body">
-{{--                {{ Form::model($tag, ['route' => ['subdomain.update', $subdomain->id], 'method' => 'put']) }}--}}
+{{--                {{ Form::model($subdomain, ['route' => ['subdomain.update', $subdomain->id], 'method' => 'put']) }}--}}
                 {{ Form::open(['route' => ['tag.update', $tag], 'method' => 'put', 'files' => true]) }}
                     <div class="form-group mt-2 md-2">
                         {{ Form::label('name', 'Name', ['class' => 'col-4 text-md-right']) }}

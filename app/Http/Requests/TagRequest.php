@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TagRequest extends FormRequest
 {
@@ -24,8 +25,8 @@ class TagRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'min:3', 'max:30'],
-            'code' => ['required', 'string', 'min:3', 'max:30'],
+            'name' => ['required', 'string', 'min:3', 'max:64'],
+            'code' => ['required', 'string', 'min:3', 'max:64'],
         ];
     }
 }
