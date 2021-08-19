@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Subdomains\SubdomainsController;
 use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::resource('tag', TagsController::class);
+Route::resource('category', CategoriesController::class);
 
 
 Route::get('/admin', [IndexController::class, 'index'])->name('admin');
