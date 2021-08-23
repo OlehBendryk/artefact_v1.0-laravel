@@ -21,7 +21,7 @@
             <div> ID - {{$category->id}}</div>
             <div> Subdomain - {{$category->subdomain->subdomain}}</div>
             <div> Name - {{$category->name}}</div>
-            <div> Code - {{'#' . $category->code}}</div>
+            <div> Code - {{$category->code}}</div>
         </div>
     </div>
 @endsection

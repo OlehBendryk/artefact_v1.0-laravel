@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Subdomains;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubdomainRequest;
 use App\Models\Subdomain;
-use Illuminate\Http\Request;
 
 class SubdomainsController extends Controller
 {

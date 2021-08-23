@@ -4,12 +4,11 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\ModeratorsController;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Subdomains\SubdomainsController;
-use App\Http\Controllers\TagsController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,11 +40,14 @@ Route::prefix('admin')->group(function () {
     Route::resource('subdomain', SubdomainsController::class);
     Route::put('subdomain/toggle/{subdomain}', [SubdomainsController::class, 'toggle'])->name('subdomain.toggle');
 
+    Route::resource('tag', TagsController::class);
+    Route::resource('category', CategoriesController::class);
+    Route::resource('post', PostsController::class);
+
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::resource('tag', TagsController::class);
-Route::resource('category', CategoriesController::class);
+
 
 
 Route::get('/admin', [IndexController::class, 'index'])->name('admin');

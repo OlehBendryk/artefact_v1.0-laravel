@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\Subdomain;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
@@ -76,8 +76,6 @@ class CategoriesController extends Controller
     {
         $subdomains = Subdomain::all()->pluck('name', 'id');
         $current_domain = $category->subdomain->id;
-//       dd($default);
-
 
         return view('admin.moderation.categories.edit')
             ->with('category', $category)
