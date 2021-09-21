@@ -22,5 +22,8 @@
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^29.2.0"
     }
 }

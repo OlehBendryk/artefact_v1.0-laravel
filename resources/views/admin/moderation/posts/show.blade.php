@@ -24,7 +24,7 @@
             <div> Category - {{$post->category->name}}</div>
             <div> Moderator - {{$post->moderator->name}}</div>
             <div> Title - {{$post->title}}</div>
-            <div> Post - {{$post->post}}</div>
+            <div> Post - {!! $post->post !!}  </div>
             <div> Active - {{$post->is_active}}</div>
             <div> Top - {{$post->is_top}}</div>
             @if($post->published_at)

@@ -54,14 +54,17 @@
                             </div>
 
                             {{ Form::label('post', 'Post', ['class' => 'col-4 text-md-right']) }}
+                            <textarea name="post" id="editor">{{$post->post}}</textarea>
                             <div class="col-8 {{ $errors->has('post') ? 'is-invalid' : '' }}">
-                                {{ Form::textarea('post', $post->post) }}
+{{--                                {{ Form::textarea('post', $post->post) }}--}}
 
                                 @if($errors->has('post'))
                                     <span class="invalid-feedback" role="alert"></span>
                                     <strong> {{ $errors->first('post') }}</strong>
                                 @endif
                             </div>
+
+                            <div id="editor"></div>
 
                             {{ Form::label('is_active', 'Active', ['class' => 'col-4 text-md-right']) }}
                             <div class="col-8 {{ $errors->has('is_active') ? 'is-invalid' : '' }}">
@@ -104,4 +107,14 @@
                         {{ Form::close() }}
                     </div>
                 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection
