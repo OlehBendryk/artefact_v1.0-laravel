@@ -15,7 +15,8 @@ class Post extends Model
         'category_id',
         'moderator_id',
         'title',
-        'post',
+        'post_raw',
+        'post_html',
         'is_active',
         'is_top',
     ];

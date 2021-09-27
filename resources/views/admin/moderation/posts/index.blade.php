@@ -44,7 +44,7 @@
                                 <td>{{$post->category->name}}</td>
                                 <td>{{$post->moderator->name}}</td>
                                 <td><a href="{{route('post.show', $post)}}">{{ $post->title }}</td>
-                                <td>{{ $post->post }}</td>
+                                <td>{!! $post->post_html !!}</td>
                                 <td>{{ $post->is_active }}</td>
                                 <td>{{ $post->is_top }}</td>
                                 <td>{{ $post->published_at }}</td>

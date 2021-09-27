@@ -58,7 +58,8 @@ class PostsController extends Controller
         $post->category_id = $request->get('category_id');
         $post->moderator_id = $request->get('moderator_id');
         $post->title = $request->get('title');
-        $post->post = $request->get('post');
+        $post->post_raw = strip_tags($request->get('post'));
+        $post->post_html = $request->get('post');
         $post->is_active = $request->get('is_active');
         $post->is_top = $request->get('is_top');
 
@@ -87,6 +88,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
+//        dd($post);
         $tag = Tag::all()->pluck('name', 'id');
         $category = Category::all()->pluck('name', 'id');
         $moderator = Moderator::all()->pluck('name', 'id');
@@ -119,9 +121,10 @@ class PostsController extends Controller
             'category_id' => $request->get('category_id'),
             'moderator_id' => $request->get('moderator_id'),
             'title' => $request->get('title'),
-            'post' => $request->get('post'),
+            'post_raw' => strip_tags($request->get('post')),
+            'post_html' => $request->get('post'),
             'is_active' => $request->get('is_active'),
-            'is_top' => $request->get('is_top'),
+            'is_top' => $request->get('is_top')
         ]);
 
         return redirect()->route('post.show', $post);

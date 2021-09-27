@@ -5,7 +5,7 @@
         <div class="col-6">
             <h2> Subdomain
                 <a href="{{ route('subdomain.toggle', $subdomain) }}" title="Switch" data-method="PUT"  data-confirm="Ви впевнені, що хочете ви перемкнути subdomain {{$subdomain->name}}?">
-                    @if($subdomain->is_active)
+                    @if($subdomain->status === 'enable')
                         <i class="fas fa-toggle-on"></i>
                     @else
                         <i class="fas fa-toggle-off"></i>
