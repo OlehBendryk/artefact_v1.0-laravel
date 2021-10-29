@@ -1,15 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('content')
     <div class="container">
 
-
-        <div class="row">
-            <div class="col-6">
+        <div class="row pt-3 pb-3 mb-3 border-bottom">
+            <div class="col-6 ">
                 <h2> Subdomains - {{ $subdomains->count() }}</h2>
+
             </div>
             <div class="col-6 text-right">
                 <a href="{{ route('subdomain.create') }}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i>Create subdomain
+                    <i class="fas fa-folder-plus"></i>
+                    Create subdomain
                 </a>
             </div>
         </div>
@@ -27,18 +29,18 @@
                         <th>created at</th>
                         <th>updated at</th>
                         <th></th>
-                        <th></th>
+                        <th>action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($subdomains as $subdomain)
                         <tr>
                             <td>
-                                <a href="{{ route('subdomain.show', $subdomain) }}">{{ $subdomain->id }}</a>
+                                <a href="{{ route('subdomain.show', $subdomain ) }}">{{ $subdomain->id }}</a>
                             </td>
                             <td>{{ $subdomain->name }}</td>
                             <td>
-                                <a href="{{route('subdomain.show', $subdomain)}}">{{ $subdomain->subdomain }}</a>
+                                <a href="{{route('subdomain.main', $subdomain->name)}}" target="_blank">{{ $subdomain->subdomain }}</a>
                             </td>
                             <td>
                                 @if($subdomain->status === 'enable')
@@ -60,9 +62,12 @@
                                 </a>
                             </td>
                             <td>
+                                <a href="{{ route('subdomain.edit', $subdomain) }}" class="btn btn-warning">
+                                    <i class="fa fa-edit"></i>
+                                </a>
 
-                                <a href="{{ route('subdomain.destroy', $subdomain) }}" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити subdomain {{$subdomain->name}}?">
-                                    <i class="fas faw fa-trash-alt text-danger"></i>
+                                <a href="{{ route('subdomain.destroy', $subdomain) }}" class="btn btn-danger" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити subdomain {{$subdomain->name}}?">
+                                    <i class="fas faw fa-trash-alt"></i>
                                 </a>
                             </td>
                         </tr>

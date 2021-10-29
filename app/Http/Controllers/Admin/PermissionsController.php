@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 
@@ -94,7 +93,7 @@ class PermissionsController extends Controller
     public function destroy(Permission $permission)
     {
         if ($permission->roles()->count())  {
-            return redirect()->back()->with('failure', 'Помилка! Permission привязаний до Role');
+            return redirect()->back()->with('error', 'Помилка! Permission привязаний до Role');
         }
         $permission->delete();
 

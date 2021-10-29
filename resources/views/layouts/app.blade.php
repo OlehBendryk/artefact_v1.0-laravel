@@ -34,6 +34,9 @@
             </div>
         @endif
 
+{{--        <div>--}}
+{{--            @yield('dashboard')--}}
+{{--        </div>--}}
 
         <div>
             @yield('content')
@@ -42,6 +45,8 @@
                 integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
                 crossorigin="anonymous"></script>
         <script src="{{ URL::asset('rails.js') }}"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+        @yield('scripts')
 
 </body>
 </html>

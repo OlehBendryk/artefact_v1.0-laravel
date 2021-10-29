@@ -29,6 +29,7 @@
     <a href="{{ route('subdomain.index') }}"> Subdomains</a><br>
     <a href="{{ route('tag.index') }}"> Tags</a><br>
     <a href="{{ route('category.index') }}"> Categories</a><br>
+    <a href="{{ route('post.index') }}"> Posts</a><br>
 
 
     </body>

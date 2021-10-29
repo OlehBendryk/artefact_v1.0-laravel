@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Admin\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Admin\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\Moderator;
 use Illuminate\Foundation\Auth\RegistersUsers;

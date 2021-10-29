@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
 
 
-        <div class="row">
+        <div class="row pt-3 pb-3 mb-3 border-bottom">
             <div class="col-6">
                 <h2> Permissions - {{ $permissions->count() }}</h2>
             </div>

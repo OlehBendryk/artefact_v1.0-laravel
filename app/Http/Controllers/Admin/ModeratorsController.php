@@ -9,6 +9,7 @@ use App\Models\Subdomain;
 use App\Models\Moderator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
@@ -22,9 +23,11 @@ class ModeratorsController extends Controller
     public function index()
     {
         $moderators = Moderator::all();
+        $subdomains = Subdomain::all();
 
         return view('admin.moderation.moderators.index')
-            ->with('moderators', $moderators);
+            ->with('moderators', $moderators)
+            ->with('subdomains', $subdomains);
     }
 
     /**
@@ -50,7 +53,7 @@ class ModeratorsController extends Controller
     {
         $moderator = DB::transaction(function () use ($request) {
 
-            $password = md5(Str::lower($request->get('password')));
+            $password = Hash::make(Str::lower($request->get('password')));
 
             $moderator = new Moderator();
             $moderator->name = $request->get('name');
