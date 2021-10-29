@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
 
 
-    <div class="row">
+    <div class="row pt-3 pb-3 mb-3 border-bottom">
         <div class="col-6">
             <h2> Moderators - {{ $moderators->count() }}</h2>
         </div>
@@ -23,6 +23,7 @@
                     <th>#</th>
                     <th>name</th>
                     <th>mail</th>
+                    <th>region</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,7 @@
                             </a>
                         </td>
                         <td>{{ $moderator->email }}</td>
+                        <td>{{ $moderator->subdomain->name }}</td>
                     </tr>
                 @endforeach
 

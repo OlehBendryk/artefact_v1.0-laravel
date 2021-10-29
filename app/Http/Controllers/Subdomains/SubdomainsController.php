@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Subdomains;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubdomainRequest;
+use App\Models\Moderator;
 use App\Models\Subdomain;
 
 class SubdomainsController extends Controller
@@ -17,6 +18,8 @@ class SubdomainsController extends Controller
      */
     public function index()
     {
+        $moder = Moderator::all();
+//        dd(auth()->check());
         $subdomains = Subdomain::all();
 
         return view('admin.moderation.subdomains.index')
@@ -99,9 +102,9 @@ class SubdomainsController extends Controller
      */
     public function destroy(Subdomain $subdomain)
     {
-        if ($subdomain->users()->exists()) {
-            return back()->with('error', "To # {$subdomain->id} domain attach users");
-        }
+//        if ($subdomain->users()->exists()) {
+//            return back()->with('error', "To # {$subdomain->id} domain attach users");
+//        }
         $subdomain->delete();
 
         return redirect()->route('subdomain.index');

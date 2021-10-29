@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Subdomain;
 use Illuminate\Support\Str;
 
@@ -105,10 +106,20 @@ class CategoriesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Category $category)
     {
+        $post = Post::all()->pluck('category_id', 'id')->toArray();
+
+        if (in_array($category->id, $post)) {
+            return redirect()->back()->with('error', 'Помилка! Category привязанa до Post');
+        }
+
         $category->delete();
+
+        return redirect()->route('category.index')
+            ->with('success', "Category {$category->name} success remove");
     }
 }
+

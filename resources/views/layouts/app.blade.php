@@ -34,6 +34,9 @@
             </div>
         @endif
 
+{{--        <div>--}}
+{{--            @yield('dashboard')--}}
+{{--        </div>--}}
 
         <div>
             @yield('content')

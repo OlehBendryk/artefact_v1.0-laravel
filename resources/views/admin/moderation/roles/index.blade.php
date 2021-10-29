@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
 
 
-        <div class="row">
+        <div class="row pt-3 pb-3 mb-3 border-bottom">
             <div class="col-6">
                 <h2> Roles - {{ $roles->count() }}</h2>
             </div>
@@ -36,8 +36,8 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('role.destroy', $role) }}" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити Role {{ $role->name }}?">
-                                    <i class="fas faw fa-trash-alt text-danger"></i>
+                                <a href="{{ route('role.destroy', $role) }}" class="btn btn-danger" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити Role {{ $role->name }}?">
+                                    <i class="fas faw fa-trash-alt"></i>
                                 </a>
                             </td>
                         </tr>

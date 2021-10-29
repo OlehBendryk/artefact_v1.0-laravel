@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('content')
     <div class="container">
 
 
-        <div class="row">
+        <div class="row pt-3 pb-3 mb-3 border-bottom">
             <div class="col-6">
                 <h2> Tags - {{ $tags->count() }}</h2>
             </div>
@@ -38,8 +39,8 @@
                                 <td>{{ $tag->created_at }}</td>
                                 <td>{{ $tag->updated_at }}</td>
                                 <td>
-                                    <a href="{{ route('tag.destroy', $tag) }}" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити tag {{$tag->name}}?">
-                                        <i class="fas faw fa-trash-alt text-danger"></i>
+                                    <a href="{{ route('tag.destroy', $tag) }}" class="btn btn-danger" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити tag {{$tag->name}}?">
+                                        <i class="fas faw fa-trash-alt"></i>
                                     </a>
                                 </td>
                             </tr>

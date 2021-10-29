@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Moderator;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,25 +35,24 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-
         $this->middleware('guest')->except('logout');
     }
-
-    public function credentials(Request $request)
-    {
-        return ['email' => $request->{$this->username()}, 'password' => md5($request->password)];
-    }
-
-    protected function attemptLogin(Request $request)
-    {
-        $data = $this->credentials($request);
-
-        $isExist = Moderator::where('email', $data['email'])->where('password', $data['password'])->first();
-
-        if ($isExist) {
-            return true;
-        }
-
-        return false;
-    }
 }
+
+//    public function credentials(Request $request)
+//    {
+//        return ['email' => $request->{$this->username()}, 'password' => $request->password];
+//    }
+
+//    protected function attemptLogin(Request $request)
+//    {
+//        $data = $this->credentials($request);
+//        $ifExist = Moderator::where('email', $data['email'])->where('password', $data['password'])->first();
+//
+//        if ($ifExist) {
+//            return true;
+//        }
+//
+//        return false;
+//    }
+

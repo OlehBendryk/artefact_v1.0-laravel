@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -11,15 +11,15 @@
 
                             <div class="form-group mt-2 md-2">
 
-                                {{ Form::label('subdomain_id', 'Domain') }}
-                                <div class="col-8 {{ $errors->has('subdomain_id') ? 'is-invalid' : '' }}">
-                                    {{ Form::select('subdomain_id', $subdomain ) }}
+{{--                                {{ Form::label('subdomain_id', 'Domain') }}--}}
+{{--                                <div class="col-8 {{ $errors->has('subdomain_id') ? 'is-invalid' : '' }}">--}}
+{{--                                    {{ Form::select('subdomain_id', $subdomain ) }}--}}
 
-                                    @if($errors->has('subdomain_id'))
-                                        <span class="invalid-feedback" role="alert"></span>
-                                        <strong> {{ $errors->first('subdomain_id') }}</strong>
-                                    @endif
-                                </div>
+{{--                                    @if($errors->has('subdomain_id'))--}}
+{{--                                        <span class="invalid-feedback" role="alert"></span>--}}
+{{--                                        <strong> {{ $errors->first('subdomain_id') }}</strong>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
 
                                 {{ Form::label('tag_id', 'Tag') }}
                                 <div class="col-8 {{ $errors->has('tag_id') ? 'is-invalid' : '' }}">
@@ -41,15 +41,18 @@
                                     @endif
                                 </div>
 
-                                {{ Form::label('moderator_id', 'Moderator') }}
-                                <div class="col-8 {{ $errors->has('moderator_id') ? 'is-invalid' : '' }}">
-                                    {{ Form::select('moderator_id', $moderator ) }}
+                                {{Form::hidden('moderator_id', $moderator->id)}}
+                                {{Form::hidden('subdomain_id', $moderator->subdomain_id)}}
 
-                                    @if($errors->has('moderator_id'))
-                                        <span class="invalid-feedback" role="alert"></span>
-                                        <strong> {{ $errors->first('moderator_id') }}</strong>
-                                    @endif
-                                </div>
+                                {{--                                {{ Form::label('moderator_id', 'Moderator') }}--}}
+{{--                                <div class="col-8 {{ $errors->has('moderator_id') ? 'is-invalid' : '' }}">--}}
+{{--                                    {{ Form::select('moderator_id', $moderator ) }}--}}
+
+{{--                                    @if($errors->has('moderator_id'))--}}
+{{--                                        <span class="invalid-feedback" role="alert"></span>--}}
+{{--                                        <strong> {{ $errors->first('moderator_id') }}</strong>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
 
                                 {{ Form::label('title', 'Title') }}
                                 <div class="col-8 {{ $errors->has('title') ? 'is-invalid' : '' }}">

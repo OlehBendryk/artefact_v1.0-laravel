@@ -10,6 +10,7 @@ use App\Models\Moderator;
 use App\Models\Post;
 use App\Models\Subdomain;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -18,6 +19,14 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
+    public function product()
+    {
+        $posts = Post::all();
+
+        return view('layouts.product')
+            ->with('posts', $posts);
+    }
+
     public function index()
     {
         $posts = Post::all();
@@ -36,7 +45,7 @@ class PostsController extends Controller
         $subdomain = Subdomain::all()->pluck('name', 'id');
         $tag = Tag::all()->pluck('name', 'id');
         $category = Category::all()->pluck('name', 'id');
-        $moderator = Moderator::all()->pluck('name', 'id');
+        $moderator = Auth::user();
 
         return view('admin.moderation.posts.create')
             ->with('subdomain', $subdomain)
@@ -58,6 +67,9 @@ class PostsController extends Controller
         $post->category_id = $request->get('category_id');
         $post->moderator_id = $request->get('moderator_id');
         $post->title = $request->get('title');
+
+        preg_match("/^.{1,90}\b/su" , strip_tags($request->get('post')) , $excerpt);
+        $post->excerpt = $excerpt[0];
         $post->post_raw = strip_tags($request->get('post'));
         $post->post_html = $request->get('post');
         $post->is_active = $request->get('is_active');
@@ -88,7 +100,6 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-//        dd($post);
         $tag = Tag::all()->pluck('name', 'id');
         $category = Category::all()->pluck('name', 'id');
         $moderator = Moderator::all()->pluck('name', 'id');

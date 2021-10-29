@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('content')
     <div class="container">
 
 
-        <div class="row">
+        <div class="row pt-3 pb-3 mb-3 border-bottom">
             <div class="col-6">
                 <h2> Posts - {{ $posts->count() }}</h2>
             </div>
@@ -27,10 +28,10 @@
                         <th>moderator</th>
                         <th>title</th>
                         <th>post</th>
-                        <th>is_active</th>
-                        <th>is_top</th>
+                        <th>active</th>
+                        <th>top</th>
                         <th>published at</th>
-                        <th>deleted_at</th>
+                        <th>deleted at</th>
                         <th>picture</th>
                         <th></th>
                     </tr>
@@ -44,7 +45,10 @@
                                 <td>{{$post->category->name}}</td>
                                 <td>{{$post->moderator->name}}</td>
                                 <td><a href="{{route('post.show', $post)}}">{{ $post->title }}</td>
-                                <td>{!! $post->post_html !!}</td>
+                                <td>
+                                    {!! $post->excerpt !!} ...
+                                    <a href="{{ route('post.show', $post) }}">читати повністю</a>
+                                </td>
                                 <td>{{ $post->is_active }}</td>
                                 <td>{{ $post->is_top }}</td>
                                 <td>{{ $post->published_at }}</td>
@@ -52,8 +56,8 @@
                                 <td>{{ $post->picture_url }}</td>
 
                                 <td>
-                                    <a href="{{ route('post.destroy', $post) }}" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити post {{$post->title}}?">
-                                        <i class="fas faw fa-trash-alt text-danger"></i>
+                                    <a href="{{ route('post.destroy', $post) }}" class="btn btn-danger" title="Delete" data-method="DELETE"  data-confirm="Ви впевнені, що хочете видалити post {{$post->title}}?">
+                                        <i class="fas faw fa-trash-alt"></i>
                                     </a>
                                 </td>
                             </tr>

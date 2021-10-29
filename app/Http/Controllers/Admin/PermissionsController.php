@@ -93,7 +93,7 @@ class PermissionsController extends Controller
     public function destroy(Permission $permission)
     {
         if ($permission->roles()->count())  {
-            return redirect()->back()->with('failure', 'Помилка! Permission привязаний до Role');
+            return redirect()->back()->with('error', 'Помилка! Permission привязаний до Role');
         }
         $permission->delete();
 
