@@ -37,7 +37,10 @@ The instructions assume that you have already installed [Docker](https://docs.do
     ```artefact.localtest.me```
 
 - Credential 
-    login ```admin@admin.com``` password ```12121212```
+
+    login ```admin@admin.com``` 
+    
+    password ```12121212```
     
 
 
