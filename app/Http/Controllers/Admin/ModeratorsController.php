@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ModeratorCreateRequest;
-use App\Http\Requests\ModeratorUpdateRequest;
+use App\Http\Requests\Moderator\ModeratorCreateRequest;
+use App\Http\Requests\Moderator\ModeratorUpdateRequest;
 use App\Models\Subdomain;
 use App\Models\Moderator;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +39,7 @@ class ModeratorsController extends Controller
     {
         $roles = Role::where('name', '!=', 'superadmin')->pluck('name', 'id');
 
-        $subdomains = Subdomain::all()->pluck('name', 'id');
+        $subdomains = Subdomain::where('name', '!=', 'Main')->pluck('name', 'id');
 
         return view('admin.moderation.moderators.create')
             ->with('roles', $roles)

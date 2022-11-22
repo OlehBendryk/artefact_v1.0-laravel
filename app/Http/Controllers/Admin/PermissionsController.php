@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PermissionRequest;
+use App\Http\Requests\Permission\PermissionRequest;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 

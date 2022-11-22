@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Subdomains;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SubdomainRequest;
+use App\Http\Requests\Subdomain\SubdomainRequest;
 use App\Models\Moderator;
 use App\Models\Subdomain;
 

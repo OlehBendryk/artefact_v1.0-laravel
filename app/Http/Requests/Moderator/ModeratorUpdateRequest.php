@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Moderator;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class SubdomainRequest extends FormRequest
+class ModeratorUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class SubdomainRequest extends FormRequest
      */
     public function rules()
     {
-        $subdomain = $this->route('subdomain');
+        $moderator = $this->route('moderator');
         return [
-            'name' => ['required', 'string', 'min:3', 'max:64', Rule::unique('subdomains')->ignore($subdomain->id ?? null)],
-            'subdomain' => ['required', 'string', 'min:3', 'max:64', Rule::unique('subdomains')->ignore($subdomain->id ?? null)],
+//            'email' => ['string', 'email', 'max:255', Rule::unique('moderators')->ignore($moderator->id ?? null)],
+//            'password' => ['confirmed', 'min:4', 'max:64'],
+            'role' => ['integer', 'exists:roles,id'],
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Subdomain;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller

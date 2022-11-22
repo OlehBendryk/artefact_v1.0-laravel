@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Post;
 use App\Models\Subdomain;
 use Closure;
+use http\Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -20,8 +21,7 @@ class SubdomainMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-
-        $currentSubdomain = $request->route('subdomain') . '.artefact.local.me';
+        $currentSubdomain = $request->route('subdomain') . '.localtest.me';
         $subdomainsArray = Subdomain::all()->pluck('subdomain', 'id')->toArray();
 
         if (in_array($currentSubdomain, $subdomainsArray)) {
@@ -32,8 +32,7 @@ class SubdomainMiddleware
                     $builder->where('subdomain_id', '=', $subdomain['id']);
                 });
             } else{
-                //error page 404
-                dd('Such subdomain not found');
+                dd('This subdomain does not has posts');
             }
         } else{
             //error page 404
