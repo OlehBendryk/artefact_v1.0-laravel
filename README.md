@@ -24,7 +24,7 @@ The instructions assume that you have already installed [Docker](https://docs.do
 
     ```docker-compose run```
     
-- Move inside docker container 
+- Move to inside docker container 
     
     ```docker exec -it artefact bash```
     
