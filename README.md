@@ -6,11 +6,11 @@ The instructions assume that you have already installed [Docker](https://docs.do
 
 - Clone this repository
     
-    ```git clone https://github.com/OlehBendryk/Laravel-sms-email-service-sending.git```
+    ```git clone https://github.com/OlehBendryk/artifact_v1.0-laravel.git```
     
 - Move to the directory 
 
-    ```cd Laravel-sms-email-service-sending```
+    ```cd artifact_v1.0-laravel```
     
 - Build all containers 
     
@@ -34,7 +34,7 @@ The instructions assume that you have already installed [Docker](https://docs.do
 
 - App local link
     
-    ```service.localtest.me```
+    ```artefact.localtest.me```
 
 - Credential 
     login ```admin@admin.com``` password ```12121212```
