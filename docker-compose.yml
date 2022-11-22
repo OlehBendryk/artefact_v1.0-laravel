@@ -12,6 +12,7 @@ services:
     networks:
       - frontend
   artefact:
+    container_name: artefact
     build: ./
     volumes:
       - ./:/project:cached

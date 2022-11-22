@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Subdomain;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class TagRequest extends FormRequest
+class SubdomainRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class TagRequest extends FormRequest
      */
     public function rules()
     {
+        $subdomain = $this->route('subdomain');
         return [
-            'name' => ['required', 'string', 'min:3', 'max:64'],
-            'code' => ['required', 'string', 'min:3', 'max:64'],
+            'name' => ['required', 'string', 'min:3', 'max:64', Rule::unique('subdomains')->ignore($subdomain->id ?? null)],
+            'subdomain' => ['required', 'string', 'min:3', 'max:64', Rule::unique('subdomains')->ignore($subdomain->id ?? null)],
         ];
     }
 }

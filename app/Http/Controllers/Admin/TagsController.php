@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TagRequest;
+use App\Http\Requests\Tag\TagRequest;
 use App\Models\Tag;
 
 class TagsController extends Controller

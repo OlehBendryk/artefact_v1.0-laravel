@@ -57,6 +57,7 @@ MAIN DOMAIN
 Route::group([
     'domain' => 'artefact.localtest.me',
     'prefix' => 'admin',
+    'middleware' => 'auth',
 ], function () {
     Route::get('/', [IndexController::class, 'index'])->name('admin');
 
@@ -106,7 +107,7 @@ Route::group([
 
     /* SUBDOMAIN ROUTES */
 Route::group([
-    'domain' => '{subdomain}.artefact.localtest.me',
+    'domain' => '{subdomain}.localtest.me',
     'middleware' => ['sub',],
     'as' => 'subdomain.main',
 ], function () {
@@ -122,8 +123,6 @@ Route::group([
     'domain' => 'artefact.localtest.me',
     'middleware' => 'web'
 ], function (){
-//    Route::get('/', [IndexController::class, 'indexHome'])->name('home');
-
     Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/admin/login', [LoginController::class, 'login']);
     Route::get('/admin/logout', [LoginController::class, 'logout'])->name('logout');

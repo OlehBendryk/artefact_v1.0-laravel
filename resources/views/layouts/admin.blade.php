@@ -28,16 +28,16 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-50" type="text" placeholder="Search" aria-label="Search">
+{{--    <input class="form-control form-control-dark w-50" type="text" placeholder="Search" aria-label="Search">--}}
 
     <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a href="#" class="mt-2 btn btn-info ">
+        <div class="nav-item text-nowrap d-flex align-items-baseline">
+            <a href="{{route('moderator.show', Auth::user()->id )}}" class="mt-2 btn btn-info ">
                 {{ \Illuminate\Support\Facades\Auth::user()->name }}
                 <span class="text-success" style="font-size:80%" >{{Auth::user()->roles->first()->name}}</span>
             </a>
             <a class="nav-link px-3" href="{{route('logout')}}">
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt "></i>
                 Sign out
             </a>
         </div>

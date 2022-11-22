@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RoleRequest;
+use App\Http\Requests\Role\RoleRequest;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 

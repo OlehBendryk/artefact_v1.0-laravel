@@ -6,7 +6,8 @@
             <div class="card-header"> Edit Category</div>
             <div class="card-body">
 {{--                {{ Form::model($subdomain, ['route' => ['subdomain.update', $subdomain->id], 'method' => 'put']) }}--}}
-                {{ Form::open(['route' => ['category.update', $category], 'method' => 'put', 'files' => true]) }}
+                {{ Form::open(['route' => ['category.update', $category], 'method' => 'post', 'files' => true]) }}
+
                     <div class="form-group mt-2 md-2">
 
                         {{ Form::label('name', 'Name', ['class' => 'col-4 text-md-right']) }}

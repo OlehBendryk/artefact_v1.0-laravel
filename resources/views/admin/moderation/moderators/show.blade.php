@@ -19,16 +19,25 @@
                         <div> Domain - <span class="text-primary">{{$moderator->subdomain->subdomain}}</span></div>
                     </div>
 
+
+
+
                     <div class="col-4 text-right">
                         <a href="{{ route('moderator.edit', $moderator) }}" class="btn btn-warning">
                             <i class="fas fa-pencil-alt"></i> Edit role
                         </a>
+                        @if($moderator->id === Auth::id())
+
+                        @else
                         <div class="mt-2">
                             <a href="{{ route('moderator.destroy', $moderator) }}" class="btn btn-danger" data-method="DELETE" data-confirm="Ви впевнені, що хочете видалити moderator {{$moderator->name}}?">
                                 <i class="fas faw fa-trash-alt "></i>  Remove
                             </a>
                         </div>
+                        @endif
+
                     </div>
+
                 </div>
             </div>
         </div>
