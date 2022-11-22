@@ -22,7 +22,7 @@ The instructions assume that you have already installed [Docker](https://docs.do
 
 - Run all containers
 
-    ```docker-compose run```
+    ```docker-compose up```
     
 - Move to inside docker container 
     
