@@ -32,9 +32,9 @@ The instructions assume that you have already installed [Docker](https://docs.do
     
     ```php artisan migrate --seed```
 
-- App local link
+- App dashboard link
     
-    ```artefact.localtest.me```
+    ```artefact.localtest.me/admin```
 
 - Credential 
 
