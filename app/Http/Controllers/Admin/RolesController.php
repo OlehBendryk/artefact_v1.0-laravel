@@ -76,7 +76,6 @@ class RolesController extends Controller
      */
     public function update(RoleRequest $request, Role $role)
     {
-//        $role->name = $request->get('name');
         $role->update(['name' => $request->get('name')]);
 
         return redirect()->route('role.show', $role);

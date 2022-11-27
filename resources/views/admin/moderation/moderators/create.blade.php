@@ -52,7 +52,13 @@
 
                 <div class="form-group row">
                     {{ Form::label('role', 'Role', ['class' => 'col-4 text-md-right']) }}
-                    {{ Form::select('role', $roles, ['class' => "form-control col-8" .  ($errors->has('role') ? 'is-invalid' : ''), 'required']) }}
+
+                    @if(Auth::user()->roles->first()->name == 'superadmin')
+                        {{ Form::select('role', $rolesForSuperAdmin, ['class' => "form-control col-8" .  ($errors->has('role') ? 'is-invalid' : ''), 'required']) }}
+                    @else
+                        {{ Form::select('role', $rolesForAdmin, ['class' => "form-control col-8" .  ($errors->has('role') ? 'is-invalid' : ''), 'required']) }}
+                    @endif
+                    
                     @if($errors->has('role'))
                         <span class="invalid-feedback" role="alert"></span>
                         <strong> {{ $errors->first('role') }}</strong>
