@@ -27,19 +27,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($moderators as $moderator)
-                    <tr>
-                        <td>{{ $moderator->id }}</td>
-                        <td>
-                            <a href="{{ route('moderator.show', $moderator) }}">
-                                {{ $moderator->name }}
-                            </a>
-                        </td>
-                        <td>{{ $moderator->email }}</td>
-                        <td>{{ $moderator->subdomain->name }}</td>
-                    </tr>
-                @endforeach
-
+                    @if(Auth::user()->roles->first()->name == 'admin')
+                        @foreach($journalists as $journalist)
+                            <tr>
+                                <td>{{ $journalist->id }}</td>
+                                <td>
+                                    <a href="{{ route('moderator.show', $journalist) }}">
+                                        {{ $journalist->name }}
+                                    </a>
+                                </td>
+                                <td>{{ $journalist->email }}</td>
+                                <td>{{ $journalist->subdomain->name }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        @foreach($moderators as $moderator)
+                            <tr>
+                                <td>{{ $moderator->id }}</td>
+                                <td>
+                                    <a href="{{ route('moderator.show', $moderator) }}">
+                                        {{ $moderator->name }}
+                                    </a>
+                                </td>
+                                <td>{{ $moderator->email }}</td>
+                                <td>{{ $moderator->subdomain->name }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

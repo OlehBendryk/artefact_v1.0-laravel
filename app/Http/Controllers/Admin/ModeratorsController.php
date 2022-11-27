@@ -23,10 +23,12 @@ class ModeratorsController extends Controller
     public function index()
     {
         $moderators = Moderator::all();
+        $journalists = Moderator::role('journalist')->get();
         $subdomains = Subdomain::all();
 
         return view('admin.moderation.moderators.index')
             ->with('moderators', $moderators)
+            ->with('journalists', $journalists)
             ->with('subdomains', $subdomains);
     }
 
@@ -37,12 +39,16 @@ class ModeratorsController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('name', '!=', 'superadmin')->pluck('name', 'id');
+        $rolesForSuperAdmin = Role::where('name', '!=', 'superadmin')->pluck('name', 'id');
+        $rolesForAdmin = Role::where('name', '!=', 'superadmin')
+            ->where('name', '!=', 'admin')
+            ->pluck('name', 'id');
 
         $subdomains = Subdomain::where('name', '!=', 'Main')->pluck('name', 'id');
 
         return view('admin.moderation.moderators.create')
-            ->with('roles', $roles)
+            ->with('rolesForSuperAdmin', $rolesForSuperAdmin)
+            ->with('rolesForAdmin', $rolesForAdmin)
             ->with('subdomains', $subdomains);
     }
 

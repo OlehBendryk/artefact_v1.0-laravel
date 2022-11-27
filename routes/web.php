@@ -27,32 +27,6 @@ use Illuminate\Support\Facades\Route;
 /*
 MAIN DOMAIN
 */
-//Route::group([
-//        'domain' => 'artefact.localtest.me',
-//        'middleware' => [],
-//], function() {
-//    Route::get('/', function () {
-//        return 'main domain';
-//    Route::get('/', [IndexController::class, 'index'])->name('main');
-
-//    });
-
-    // SUPER ADMIN AND MODERATORS : SERVICE MANAGEMENT
-//Route::group([
-//    'domain' => 'artefact.localtest.me',
-//], function () {
-//    Route::get('/', function () {
-//        return 'main domain';
-//    })->name('main');
-//    Route::group([
-//        'prefix' => 'admin',
-//        'middleware' => [],
-//    ], function () {
-//        Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-//        Route::post('login', [LoginController::class, 'login']);
-//        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-//    });
-//});
 
 Route::group([
     'domain' => 'artefact.localtest.me',
@@ -65,6 +39,8 @@ Route::group([
         'middleware' => ['auth', 'role:superadmin',],
     ], function () {
         Route::resource('subdomain', SubdomainsController::class);
+
+        /* Toggle status subdomain */
         Route::put('subdomain/toggle/{subdomain}', [SubdomainsController::class, 'toggle'])->name('subdomain.toggle');
         Route::resource('role', RolesController::class)->except(['edit', 'update']);
     });
@@ -87,7 +63,6 @@ Route::group([
     });
 
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-//    });
 });
 
     /*
